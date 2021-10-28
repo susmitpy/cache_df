@@ -37,7 +37,7 @@ class CacheDF:
             df (pandas.DataFrame): dataframe to write to disk
             uuid (str): Unique identifier for the dataframe used to name the parquet file
         """
-        df.to_parquet(os.path.join(self.cache_dir, uuid))
+        df.to_parquet(os.path.join(self.cache_dir, uuid + ".parquet"))
 
     def read(self, uuid: str) -> Union[pd.DataFrame, FileNotFoundError]:
         """
@@ -54,7 +54,7 @@ class CacheDF:
         if not self.is_cached(uuid):
             raise FileNotFoundError(f"{uuid} not found in cache directory")
 
-        return pd.read_parquet(os.path.join(self.cache_dir, uuid))
+        return pd.read_parquet(os.path.join(self.cache_dir, uuid + ".parquet"))
 
     def uncache(self, uuid: str):
         """
@@ -63,15 +63,15 @@ class CacheDF:
         Args:
             uuid (str): Unique identifier for the dataframe used to name the parquet file
         """
-        if os.path.exists(os.path.join(self.cache_dir, uuid)):
-            os.remove(os.path.join(self.cache_dir, uuid))
+        if self.is_cached(uuid):
+            os.remove(os.path.join(self.cache_dir, uuid + ".parquet"))
 
     def clear(self: str):
         """
         Deletes all parquet files from disk
         """
-        for uuid in os.listdir(self.cache_dir):
-            self.delete(uuid)
+        for file in os.listdir(self.cache_dir):
+            os.remove(os.path.join(self.cache_dir, file))
 
     def is_cached(self, uuid: str) -> bool:
         """
@@ -83,4 +83,4 @@ class CacheDF:
         Returns:
             bool: True if the file exists on disk, False otherwise
         """
-        return os.path.exists(os.path.join(self.cache_dir, uuid))
+        return os.path.exists(os.path.join(self.cache_dir, uuid + ".parquet"))

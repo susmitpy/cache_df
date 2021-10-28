@@ -6,29 +6,29 @@ Easily cache Pandas Dataframes to disk using a simple interface.
 
 
 ```python
-import CacheDF
+from cache_df import CacheDF
 import pandas as pd
 
-cache_df = CacheDF(cache_dir='./caches')
+cache = CacheDF(cache_dir='./caches')
 
 # Caching a dataframe
 df = pd.DataFrame(...)
-cache_df.cache(df, 'my_df')
+cache.cache(df, 'my_df')
 
 # Checking if a dataframe is cached
-df_is_cached = cache_df.is_cached('my_df')
+df_is_cached = cache.is_cached('my_df')
 
 # Reading a dataframe from cache
 try:
-    df = cache_df.read('my_df')
+    df = cache.read('my_df')
 except FileNotFoundError:
     print('Dataframe not cached')
 
 # Deleting a dataframe from cache if it exists
-cache_df.uncache('my_df')
+cache.uncache('my_df')
 
 # Clearing all cached dataframes
-cache_df.clear()
+cache.clear()
 ```
 
 ## Where it can be used
