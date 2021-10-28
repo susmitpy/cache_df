@@ -1,0 +1,62 @@
+Metadata-Version: 2.1
+Name: cache-df
+Version: 0.4
+Summary: Cache pandas dataframes with a simple interface
+Home-page: https://github.com/susmitpy/cache_df
+Author: Susmit Rajeev Vengurlekar
+Author-email: susmit.py@gmail.com
+License: GPL
+Download-URL: https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.3.tar.gz
+Description: # Cache Pandas Dataframe to Disk
+        
+        Easily cache Pandas Dataframes to disk using a simple interface.
+        
+        ## Sample usage
+        
+        
+        ```python
+        import CacheDF
+        import pandas as pd
+        
+        cache_df = CacheDF(cache_dir='./caches')
+        
+        # Caching a dataframe
+        df = pd.DataFrame(...)
+        cache_df.cache(df, 'my_df')
+        
+        # Checking if a dataframe is cached
+        df_is_cached = cache_df.is_cached('my_df')
+        
+        # Reading a dataframe from cache
+        try:
+            df = cache_df.read('my_df')
+        except FileNotFoundError:
+            print('Dataframe not cached')
+        
+        # Deleting a dataframe from cache if it exists
+        cache_df.uncache('my_df')
+        
+        # Clearing all cached dataframes
+        cache_df.clear()
+        ```
+        
+        ## Where it can be used
+        1) It can be used when you are using a shared file system across multiple machines such as AWS EFS, GCP Filestore, Azure Files, etc.
+        
+        
+        
+        
+Keywords: cache pandas dataframe,cache dataframe,caching
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Topic :: Software Development :: Build Tools
+Classifier: License :: OSI Approved :: GNU General Public License (GPL)
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Description-Content-Type: text/markdown

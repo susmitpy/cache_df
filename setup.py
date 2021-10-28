@@ -1,15 +1,22 @@
-from distutils.core import setup
+from setuptools import setup
+
+
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
 
 setup(
     name="cache_df",
     packages=["cache_df"],
-    version="0.2",
+    version="0.4",
     license="GPL",
     description="Cache pandas dataframes with a simple interface",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author="Susmit Rajeev Vengurlekar",
     author_email="susmit.py@gmail.com",
     url="https://github.com/susmitpy/cache_df",
-    download_url="https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.1.tar.gz",
+    download_url="https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.3.tar.gz",
     keywords=["cache pandas dataframe", "cache dataframe", "caching"],
     install_requires=["pandas"],
     classifiers=[

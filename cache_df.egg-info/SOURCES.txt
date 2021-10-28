@@ -1,0 +1,10 @@
+README.md
+setup.cfg
+setup.py
+cache_df/__init__.py
+cache_df/cache_df.py
+cache_df.egg-info/PKG-INFO
+cache_df.egg-info/SOURCES.txt
+cache_df.egg-info/dependency_links.txt
+cache_df.egg-info/requires.txt
+cache_df.egg-info/top_level.txt
