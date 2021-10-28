@@ -9,7 +9,7 @@ setup(
     author="Susmit Rajeev Vengurlekar",
     author_email="susmit.py@gmail.com",
     url="https://github.com/susmitpy/cache_df",
-    download_url="https://github.com/susmitpy/cache_df/archive/v_01.tar.gz",
+    download_url="https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.1.tar.gz",
     keywords=["cache pandas dataframe", "cache dataframe", "caching"],
     install_requires=["pandas"],
     classifiers=[
