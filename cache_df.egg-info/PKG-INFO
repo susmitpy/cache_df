@@ -1,13 +1,13 @@
 Metadata-Version: 2.1
 Name: cache-df
-Version: 0.6
+Version: 1.1
 Summary: Cache pandas dataframes with a simple interface
 Home-page: https://github.com/susmitpy/cache_df
 Author: Susmit Rajeev Vengurlekar
 Author-email: susmit.py@gmail.com
 License: GPL
-Download-URL: https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.6.tar.gz
-Description: # Cache Pandas Dataframe to Disk
+Download-URL: https://github.com/susmitpy/cache_df/archive/refs/tags/v_1.1.tar.gz
+Description: # Cache Pandas Dataframes to Disk
         
         Easily cache Pandas Dataframes to disk using a simple interface.
         
@@ -21,7 +21,7 @@ Description: # Cache Pandas Dataframe to Disk
         cache = CacheDF(cache_dir='./caches')
         
         # Caching a dataframe
-        df = pd.DataFrame(...)
+        df = pd.DataFrame({'a': [1, 2, 3], 'b': [4, 5, 6]})
         cache.cache(df, 'my_df')
         
         # Checking if a dataframe is cached
@@ -30,6 +30,7 @@ Description: # Cache Pandas Dataframe to Disk
         # Reading a dataframe from cache
         try:
             df = cache.read('my_df')
+            df_selective_cols = cache.read('my_df', columns=['a'])  # Read only a subset of columns
         except FileNotFoundError:
             print('Dataframe not cached')
         
@@ -48,7 +49,7 @@ Description: # Cache Pandas Dataframe to Disk
         
 Keywords: cache pandas dataframe,cache dataframe,caching
 Platform: UNKNOWN
-Classifier: Development Status :: 4 - Beta
+Classifier: Development Status :: 5 - Production/Stable 
 Classifier: Intended Audience :: Developers
 Classifier: Topic :: Software Development :: Build Tools
 Classifier: License :: OSI Approved :: GNU General Public License (GPL)

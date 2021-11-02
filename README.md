@@ -21,7 +21,7 @@ df_is_cached = cache.is_cached('my_df')
 # Reading a dataframe from cache
 try:
     df = cache.read('my_df')
-    df_selective_cols = cache.read('my_df', cols=['a'])  # Read only a subset of columns
+    df_selective_cols = cache.read('my_df', columns=['a'])  # Read only a subset of columns
 except FileNotFoundError:
     print('Dataframe not cached')
 
