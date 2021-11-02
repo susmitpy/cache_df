@@ -1,5 +1,5 @@
 import os
-from typing import Union
+from typing import List, Optional, Union
 import pandas as pd
 
 
@@ -39,12 +39,13 @@ class CacheDF:
         """
         df.to_parquet(os.path.join(self.cache_dir, uuid + ".parquet"))
 
-    def read(self, uuid: str) -> Union[pd.DataFrame, FileNotFoundError]:
+    def read(self, uuid: str, columns: Optional[List[str]]=None) -> Union[pd.DataFrame, FileNotFoundError]:
         """
         Reads a parquet file from disk and returns the dataframe
 
         Args:
             uuid (str): Unique identifier for the dataframe used to name the parquet file
+            columns (Optional[List[str]]): list of columns to read from the dataframe (default: None: read all columns)
         Returns:
             pandas.DataFrame: dataframe read from disk
         
@@ -54,7 +55,10 @@ class CacheDF:
         if not self.is_cached(uuid):
             raise FileNotFoundError(f"{uuid} not found in cache directory")
 
-        return pd.read_parquet(os.path.join(self.cache_dir, uuid + ".parquet"))
+        if columns is None:
+            return pd.read_parquet(os.path.join(self.cache_dir, uuid + ".parquet"))
+        else:
+            return pd.read_parquet(os.path.join(self.cache_dir, uuid + ".parquet"), columns=columns)
 
     def uncache(self, uuid: str):
         """

@@ -8,7 +8,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 setup(
     name="cache_df",
     packages=["cache_df"],
-    version="0.6",
+    version="1.0",
     license="GPL",
     description="Cache pandas dataframes with a simple interface",
     long_description=long_description,
@@ -16,11 +16,11 @@ setup(
     author="Susmit Rajeev Vengurlekar",
     author_email="susmit.py@gmail.com",
     url="https://github.com/susmitpy/cache_df",
-    download_url="https://github.com/susmitpy/cache_df/archive/refs/tags/v_0.6.tar.gz",
+    download_url="https://github.com/susmitpy/cache_df/archive/refs/tags/v_1.0.tar.gz",
     keywords=["cache pandas dataframe", "cache dataframe", "caching"],
     install_requires=["pandas"],
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable ",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
         "License :: OSI Approved :: GNU General Public License (GPL)",
