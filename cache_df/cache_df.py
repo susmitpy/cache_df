@@ -87,4 +87,20 @@ class CacheDF:
         Returns:
             bool: True if the file exists on disk, False otherwise
         """
-        return os.path.exists(os.path.join(self.cache_dir, uuid + ".parquet"))
+        path = os.path.join(self.cache_dir, uuid + ".parquet")
+        is_path_exists = os.path.exists(path)
+        if not is_path_exists:
+            return False
+        # path exists
+        is_path_dir = os.path.isdir(path)
+        if not is_path_dir:
+            return True
+        # path is a directory
+        # check if directory is empty
+        is_dir_empty = not os.listdir(path)
+        if not is_dir_empty:
+            return True
+        # directory is empty
+        # delete the empty directory
+        os.rmdir(path)
+        return False
